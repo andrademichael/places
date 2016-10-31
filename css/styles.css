@@ -5,3 +5,13 @@ p.warning {
 .place {
   display: none;
 }
+
+.placeTitle {
+  font-weight: bold;
+  font-size: 24pt;
+}
+
+li {
+  font-weight: normal;
+  font-size: 12pt;
+}

@@ -1,45 +1,42 @@
 //backend
-
-function Place(name, date, country, activity, notes) {
+function Place(name, date1, date2, country, activity, notes) {
   this.placeName = name;
-  this.placeDate = date;
+  this.startDate = date1;
+  this.endDate = date2;
   this.placeCountry = country;
   this.placeActivity = activity;
   this.placeNotes = notes;
 }
 
 Place.prototype.details = function() {
-  return [this.placeName, this.placeDate, this.placeCountry, this.placeActivity, this.placeNotes];
+  return [this.placeName, this.startDate, this.endDate, this.placeCountry, this.placeActivity, this.placeNotes];
 }
 
+// UI
 $(document).ready(function() {
-  //add form?
   $("#places").submit(function(event) {
     event.preventDefault();
     var nameInput = $("input#placeName").val();
-    var dateInput = $(".input-daterange").val();
+    var startDateInput = $("#startDate").val();
+    var endDateInput = $("#endDate").val();
     var countryInput = $("input#country").val();
     var mainInput = $("input#mainActivity").val();
-    var notesInput = $("input#notes").val();
+    var notesInput = $("textarea#notes").val();
 
     if ((nameInput === "" || /\d/.test(nameInput)) || (countryInput === "" || /\d/.test(nameInput)) || (mainInput === "" || /\d/.test(nameInput))) {
       $("#placeName, #mainActivity, #country").addClass("alert-danger");
       $(".warning").text("Please make sure to enter some text.");
     } else {
-      var newPlace = new Place(nameInput, dateInput, countryInput, mainInput, notesInput);
+      var newPlace = new Place(nameInput, startDateInput, endDateInput, countryInput, mainInput, notesInput);
       var thisPlace = newPlace.details();
+      $("#placeInfo").append("<ul class='placeTitle'>" + newPlace.placeName + "</ul>");
 
-      $("#placeInfo").append("<h3><span class='placeTitle'>" + newPlace.placeName + "</span></h3>");
-
-      for (i = 1; i < thisPlace.length; i++) {
-         $("ul#placeInfo").append("<li><span class='place'>" + thisPlace[i] + "</span></li>");
+      for (var i = 1; i < thisPlace.length; i++) {
+         $(".placeTitle").last().append("<li class='place'>" + thisPlace[i] + "</li>");
       };
 
-      // thisPlace.forEach(function(detail) {
-      //   $("ul#placeInfo").append("<li><span class='place'>" + detail + "</span></li>");
-      // });
-
-      $(".place").last().click(function() {
+      $(".placeTitle").last().click(function() {
+        $(this).children().toggle();
       });
 
     };
