@@ -22,7 +22,11 @@
             </div>
             <div class="form-group">
               <label for="dateVisited"><h4>Date you visited:</h4></label><br>
-              <input id="dateVisited" type="text">
+              <div class="input-group input-daterange">
+                <input id="dateVisited" type="date" class="form control">
+                <span class="input-group-addon">to</span>
+                <input id="dateVisited" type="date" class="form control">
+              </div>
             </div>
             <div class="form-group">
               <label for="country"><h4>Country:</h4></label><br>
@@ -36,7 +40,7 @@
             </div>
             <div class="form-group">
               <label for="notes"><h4>Trip Notes:</h4></label><br>
-              <input id="notes" type="text">
+              <textarea id="notes" type="text" class="form-control" rows="3"></textarea>
             </div>
             <button type="submit" class="btn btn-info">Add this place!</button>
             <button type="reset" class="btn btn-primary">Clear Form</button>

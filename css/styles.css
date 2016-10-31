@@ -1,12 +1,7 @@
-input {
-  width: 50%;
-}
-
-input#notes {
-  width: 100%;
-  height: 5em;
-}
-
 p.warning {
   width: 50%;
+}
+
+.place {
+  display: none;
 }

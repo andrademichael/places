@@ -17,7 +17,7 @@ $(document).ready(function() {
   $("#places").submit(function(event) {
     event.preventDefault();
     var nameInput = $("input#placeName").val();
-    var dateInput = $("input#dateVisited").val();
+    var dateInput = $(".input-daterange").val();
     var countryInput = $("input#country").val();
     var mainInput = $("input#mainActivity").val();
     var notesInput = $("input#notes").val();
@@ -27,15 +27,21 @@ $(document).ready(function() {
       $(".warning").text("Please make sure to enter some text.");
     } else {
       var newPlace = new Place(nameInput, dateInput, countryInput, mainInput, notesInput);
-      console.log(newPlace);
       var thisPlace = newPlace.details();
-      thisPlace.forEach(function(detail) {
-        if (detail === nameInput) {
-          $("#placeInfo").append("<h3><span class='place'>" + detail + "</span></h3>");
-        } else {
-          $("ul#placeInfo").append("<li><span class='place'>" + detail + "</span></li>");
-        };
+
+      $("#placeInfo").append("<h3><span class='placeTitle'>" + newPlace.placeName + "</span></h3>");
+
+      for (i = 1; i < thisPlace.length; i++) {
+         $("ul#placeInfo").append("<li><span class='place'>" + thisPlace[i] + "</span></li>");
+      };
+
+      // thisPlace.forEach(function(detail) {
+      //   $("ul#placeInfo").append("<li><span class='place'>" + detail + "</span></li>");
+      // });
+
+      $(".place").last().click(function() {
       });
+
     };
   });
 });
