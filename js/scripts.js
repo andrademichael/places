@@ -22,15 +22,20 @@ $(document).ready(function() {
     var mainInput = $("input#mainActivity").val();
     var notesInput = $("input#notes").val();
 
-    var newPlace = new Place(nameInput, dateInput, countryInput, mainInput, notesInput);
-    console.log(newPlace);
-    var thisPlace = newPlace.details();
-    thisPlace.forEach(function(detail) {
-      if (detail === nameInput) {
-        $("#placeInfo").append("<h3><span class='place'>" + detail + "</span></h3>");
-      } else {
-        $("ul#placeInfo").append("<li><span class='place'>" + detail + "</span></li>");
-      };
-    });
+    if ((nameInput === "" || /\d/.test(nameInput)) || (countryInput === "" || /\d/.test(nameInput)) || (mainInput === "" || /\d/.test(nameInput))) {
+      $("#placeName, #mainActivity, #country").addClass("alert-danger");
+      $(".warning").text("Please make sure to enter some text.");
+    } else {
+      var newPlace = new Place(nameInput, dateInput, countryInput, mainInput, notesInput);
+      console.log(newPlace);
+      var thisPlace = newPlace.details();
+      thisPlace.forEach(function(detail) {
+        if (detail === nameInput) {
+          $("#placeInfo").append("<h3><span class='place'>" + detail + "</span></h3>");
+        } else {
+          $("ul#placeInfo").append("<li><span class='place'>" + detail + "</span></li>");
+        };
+      });
+    };
   });
 });

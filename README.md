@@ -10,13 +10,26 @@
 
 ## Specifications
 
-1. Assigns user input to object properties using jquery
+1. Alerts if input is only numbers or symbols for name of place, country, main activity, and trip notes.
+* Input: 345
+* Output: "Please enter text"
 
-2. Alerts if input is only numbers or symbols
+2. Assigns user input to object properties using jquery and displays place name in an unordered list
+* Input: "Portland", "always", "USAUSAUSA", "Epicodus", "Good coffee, bad weather"
+* Output:
+  - Portland
+  - always
+  - USAUSAUSA
+  - Epicodus
+  - Good coffee, bad weather
 
-3. Displays place name in an unordered list
-
-4. List items are clickable and display all properties of that place
+3. List items are clickable and display all properties of that place
+* Input: click list element "Portland"
+* Output:
+  - always
+  - USAUSAUSA
+  - Epicodus
+  - Good coffee, bad weather
 
 ## Support and contact details
 
